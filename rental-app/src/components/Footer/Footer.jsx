@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div>
       <button
-      onClick={}>
+      >
         Github</button>
 
     </div>
