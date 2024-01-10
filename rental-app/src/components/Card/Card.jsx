@@ -18,10 +18,10 @@ function Card() {
             />
             <div className="cardInfos">
               <h2 className="cardTitle">
-                {place.city}, {place.country}
+              {place.name}
               </h2>
-              <p className="cardDesc">{place.name}</p>
-              <p className="cardPrice">{place.price}€</p>
+              <p className="cardDesc">{place.city}, {place.country}</p>
+              <p className="cardPrice">{place.price}€ / night</p>
             </div>
           </div>
         );
