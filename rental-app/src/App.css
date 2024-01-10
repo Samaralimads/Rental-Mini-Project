@@ -5,3 +5,7 @@
   box-sizing: border-box;
   
 }
+
+.mainContainer{
+  display: flex;
+}

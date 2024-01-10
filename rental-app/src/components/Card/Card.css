@@ -1,0 +1,13 @@
+.cardContainer{
+    border: 1px black solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.cardImage{
+    height: 200px;
+}
+
+/* main{
+
+} */
