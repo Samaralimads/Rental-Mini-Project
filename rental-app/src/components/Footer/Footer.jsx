@@ -1,12 +1,12 @@
 import React from "react";
 import "./Footer.css";
+import "./github logo.png";
 function Footer() {
   return (
-    <div>
-      <button
-      >
-        Github</button>
-
+    <div className="Footer">
+      <a href="https://github.com/Samaralimads/Rental-Mini-Project">
+        <img src="./github logo.png" className="GitLogo"></img>
+      </a>
     </div>
   );
 }

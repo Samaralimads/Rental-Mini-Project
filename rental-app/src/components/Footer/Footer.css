@@ -1,4 +1,16 @@
-div {
-  border: 1px;
-  color: black;
+.Footer {
+  background-color: #06496a;
+  text-align: center;
+  border: 2px solid black;
+  margin-top: 5px;
+  padding: 20px;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.GitLogo {
+  height: 50px;
+  width: 50px;
 }
