@@ -1,9 +1,9 @@
 import React from 'react'
 
-function itemDetailsPage() {
+function ItemDetailsPage() {
   return (
-    <div>itemDetailsPage</div>
+    <div>ItemDetailsPage</div>
   )
 }
 
-export default itemDetailsPage
+export default ItemDetailsPage
