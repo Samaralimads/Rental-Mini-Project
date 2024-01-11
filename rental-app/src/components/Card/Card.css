@@ -1,22 +1,28 @@
-*{
+* {
   box-sizing: border-box;
-
 }
-.cardContainer{
-    border-bottom: 1px gray solid;
-    display: flex;
-    flex-direction: row;
-    /* border: 1px solid purple; */
-    width: 100%;
-
+.cardContainer {
+  border-bottom: 1px gray solid;
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid purple; */
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+  & :hover{
+    cursor: pointer;
+  }
 }
 
-.cardImage{
-    height: 15rem;
-    aspect-ratio: 4/3;
-object-fit: cover;}
+.cardImage {
+  height: 15rem;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 3%;
+  border: 1px whitesmoke solid;
+}
 
-main{
-width: 100vw;
-/* border: 1px solid blue; */
+main {
+  width: 100vw;
+  /* border: 1px solid blue; */
 }

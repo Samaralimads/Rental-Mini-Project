@@ -1,5 +1,5 @@
 import "./App.css";
-import Sidebar from "./components/SideBar/SideBar";
+import Sidebar from "./components/Sidebar/SideBar";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Card from "./components/Card/Card";
