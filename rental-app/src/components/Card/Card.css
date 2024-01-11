@@ -1,0 +1,22 @@
+*{
+  box-sizing: border-box;
+
+}
+.cardContainer{
+    border-bottom: 1px gray solid;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid purple; */
+    width: 100%;
+
+}
+
+.cardImage{
+    height: 15rem;
+    aspect-ratio: 4/3;
+object-fit: cover;}
+
+main{
+width: 100vw;
+/* border: 1px solid blue; */
+}

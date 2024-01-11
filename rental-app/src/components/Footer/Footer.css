@@ -1,7 +1,7 @@
 .Footer {
   background-color: #06496a;
   text-align: center;
-  border: 2px solid black;
+  border: 1px solid black;
   margin-top: 5px;
   padding: 20px;
   width: 100%;
@@ -13,4 +13,5 @@
 .GitLogo {
   height: 50px;
   width: 50px;
+  border-radius: 10px;
 }
