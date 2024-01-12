@@ -1,43 +1,57 @@
 import React from "react";
 import "./aboutPage.css";
 
+const TeamMember = ({ name, image, github }) => {
+  return (
+    <div className="team-member">
+      <img className="profileImg" src={image} alt={`${name}'s Avatar`} />
+      <h3>{name}</h3>
+      <a href={github} target="_blank" rel="noopener noreferrer">
+        <img
+          className="gitImg"
+          src="./src/assets/github-mark.png"
+          alt="GitHub Icon"
+        />
+      </a>
+    </div>
+  );
+};
+
 const AboutPage = () => {
   return (
     <div className="about-page">
       <h1>About Us</h1>
-      <p>
-        Welcome to our React Mini project! This page provides information about
-        the project and the team members.
+      <p className="firstParagraph">Welcome to our React Mini project!</p>
+      <p className="secondParagraph">
+        This page provides information about the project and the team members.
       </p>
 
       <h2>Project Description</h2>
-      <p>Describe the project</p>
+      <p className="thirdParagraph">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi,
+        repellendus mollitia officia neque sed ex voluptatibus nemo, eveniet,
+        doloremque velit dolor illo error nulla corporis laboriosam debitis
+        aspernatur quod voluptatem?
+      </p>
 
       <h2>Team Members</h2>
-      {/* <ul>
-        <li>
-          <strong>Team Member 1:</strong> Full Name
-          <br />
-          GitHub:{" "}
-          <a
-            href="https://github.com/username1"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          <br />
-          LinkedIn:{" "}
-          <a
-            href="https://www.linkedin.com/in/username1"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-        </li>
-     
-      </ul> */}
+      <div className="team-members-container">
+        <TeamMember
+          name="Evan"
+          image="./src/assets/evan.jpeg"
+          github="https://github.com/Zevinos"
+        />
+        <TeamMember
+          name="Michaël"
+          image="./src/assets/Michaël.png"
+          github="https://github.com/michaelrasolo"
+        />
+        <TeamMember
+          name="Samara"
+          image="./src/assets/Samara.png"
+          github="https://github.com/samara-profile"
+        />
+      </div>
     </div>
   );
 };

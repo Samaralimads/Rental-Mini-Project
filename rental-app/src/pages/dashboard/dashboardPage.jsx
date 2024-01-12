@@ -1,15 +1,18 @@
 import React from "react";
+import Card from "../../components/Card/Card"
+import Sidebar from "../../components/Sidebar/Sidebar"
+import './dashboardPage.css'
 
-function dashboardPage() {
+function DashboardPage() {
   return (
-    <div>
-      dashboardPage
-      {/* <div className="mainContainer">
+   
+      <div className="mainContainer">
     <Sidebar />
     <Card />
-  </div> */}
-    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab laborum ut blanditiis culpa at harum animi itaque est dolore praesentium, maiores incidunt, mollitia vel, commodi tenetur odio nemo inventore! Tenetur.</p>
+  </div>
+
   );
 }
 
-export default dashboardPage;
+export default DashboardPage;
