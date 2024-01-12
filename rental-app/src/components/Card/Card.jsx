@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Card.css";
 import JSON from "../../assets/rentals.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faMapPin } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faMapPin, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 function Card() {
   const [visibleCount, setVisibleCount] = useState(20);
@@ -37,9 +37,14 @@ function Card() {
             </p>
             <p className="cardPrice">Capacity: {place.accommodates} pax</p>
             <p className="cardPrice">{place.price}€ / night</p>
-            <button className="deleteBtn" onClick={() => handleDelete(place.id)}>
-              <FontAwesomeIcon icon={faTrash} />
-            </button>
+            <div className="cardBtnContainer">
+              <button className="cardBtn" onClick={() => handleDelete(place.id)}>
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+              <button className="cardBtn" onClick={() => handleDelete(place.id)}>
+              <FontAwesomeIcon icon={faPenToSquare} />
+              </button>
+            </div>
           </div>
         </div>
       ))}
