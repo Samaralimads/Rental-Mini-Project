@@ -1,31 +1,52 @@
 import React, { useState } from "react";
 import "./Card.css";
 import JSON from "../../assets/rentals.json";
-// Displaying PICTURE NAME CITY COUNTRY PRICE/NIGHT
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faMapPin } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 function Card() {
-  const [rentalListing, setRentalListing] = useState(JSON.results);
-  console.log(rentalListing);
+  const [visibleCount, setVisibleCount] = useState(20);
+  const [rentalListing, setRentalListing] = useState(
+    JSON.results.slice(0, visibleCount)
+  );
+
+  const handleSeeMore = () => {
+    setVisibleCount((prevCount) => prevCount + 20);
+    setRentalListing(JSON.results.slice(0, visibleCount + 20));
+  };
+  const handleDelete = (id) => {
+    const updatedListing = rentalListing.filter((place) => place.id !== id);
+    setRentalListing(updatedListing);
+  };
+
   return (
     <main>
-
-      {rentalListing.map((place) => {
-          return (
-          <div className="cardContainer">
+      {rentalListing.map((place) => (
+        <div className="cardContainer" key={place.id}>
+          <Link>
             <img
               src={place.picture_url.url}
               alt="Picture"
               className="cardImage"
             />
-            <div className="cardInfos">
-              <h2 className="cardTitle">
-              {place.name}
-              </h2>
-              <p className="cardDesc">{place.city}, {place.country}</p>
-              <p className="cardPrice">{place.price}€ / night</p>
-            </div>
+          </Link>
+          <div className="cardInfos">
+            <Link className="cardTitle">{place.name}</Link>
+            <p className="cardDesc">
+            <FontAwesomeIcon icon={faMapPin} /> {place.city}, {place.country}
+            </p>
+            <p className="cardPrice">Capacity: {place.accommodates} pax</p>
+            <p className="cardPrice">{place.price}€ / night</p>
+            <button className="deleteBtn" onClick={() => handleDelete(place.id)}>
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
           </div>
-        );
-    })}
+        </div>
+      ))}
+
+      {rentalListing.length < JSON.results.length && (
+        <button onClick={handleSeeMore}>See More</button>
+      )}
     </main>
   );
 }
