@@ -7,7 +7,7 @@ function NavBar() {
     <nav className="Navbar">
       <a href="/" className="navLogoContainer">
         <img src="/logo.png" alt="Rental Logo" className="navLogo" />
-      <h1>AppRentals</h1>
+      <h1 className="navTitle">AppRentals</h1>
       </a>
       <NavLink className="navbarLinksContainer">
         <Link to="/" className="navbarLink">HOME</Link>

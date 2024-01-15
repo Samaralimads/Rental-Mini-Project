@@ -7,13 +7,11 @@ import DashboardPage from "./pages/dashboard/DashboardPage";
 import AboutPage from "./pages/about/aboutPage";
 import ItemDetailsPage from "./pages/itemDetails/itemDetailsPage";
 import NotFoundPage from "./pages/notFound/notFoundPage";
-import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (
     <>
       <NavBar />
-      {/* <Sidebar/> */}
       <Routes>
         <Route path="/about" element={<AboutPage />} />
         <Route path="/" element={<DashboardPage />} />

@@ -39,10 +39,10 @@ function Card() {
             <p className="cardPrice">{place.price}€ / night</p>
             <div className="cardBtnContainer">
               <button className="cardBtn" onClick={() => handleDelete(place.id)}>
-                <FontAwesomeIcon icon={faTrash} />
+                <FontAwesomeIcon icon={faTrash} />Delete
               </button>
               <button className="cardBtn" onClick={() => handleDelete(place.id)}>
-              <FontAwesomeIcon icon={faPenToSquare} />
+              <FontAwesomeIcon icon={faPenToSquare} />Edit
               </button>
             </div>
           </div>
@@ -50,7 +50,7 @@ function Card() {
       ))}
 
       {rentalListing.length < JSON.results.length && (
-        <button onClick={handleSeeMore}>See More</button>
+        <button className="cardBtn" onClick={handleSeeMore}>See More</button>
       )}
     </main>
   );

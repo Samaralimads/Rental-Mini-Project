@@ -19,7 +19,7 @@
 Link{
   text-decoration: none;
 }
-h1 {
+.navTitle {
   margin: 0;
   color: #05618e;
   font-family: "Diphylleia", serif;
