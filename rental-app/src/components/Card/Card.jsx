@@ -1,27 +1,43 @@
-import React, { useState } from "react";
 import "./Card.css";
-import JSON from "../../assets/rentals.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faMapPin, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faMapPin,
+  faPenToSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+const API_URL = "https://json-server-rentals.vercel.app/results/";
+
 function Card() {
   const [visibleCount, setVisibleCount] = useState(20);
-  const [rentalListing, setRentalListing] = useState(
-    JSON.results.slice(0, visibleCount)
-  );
+  const [rentalListing, setRentalListing] = useState([]);
 
   const handleSeeMore = () => {
     setVisibleCount((prevCount) => prevCount + 20);
-    setRentalListing(JSON.results.slice(0, visibleCount + 20));
   };
+
   const handleDelete = (id) => {
     const updatedListing = rentalListing.filter((place) => place.id !== id);
     setRentalListing(updatedListing);
   };
 
+  async function fetchAllCards() {
+    try {
+      const response = await axios.get(API_URL);
+      setRentalListing(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    fetchAllCards();
+  }, []);
+
   return (
     <main>
-      {rentalListing.map((place) => (
+      {rentalListing.slice(0, visibleCount).map((place) => (
         <div className="cardContainer" key={place.id}>
           <Link>
             <img
@@ -33,24 +49,34 @@ function Card() {
           <div className="cardInfos">
             <Link className="cardTitle">{place.name}</Link>
             <p className="cardDesc">
-            <FontAwesomeIcon icon={faMapPin} /> {place.city}, {place.country}
+              <FontAwesomeIcon icon={faMapPin} /> {place.city}, {place.country}
             </p>
             <p className="cardPrice">Capacity: {place.accommodates} pax</p>
             <p className="cardPrice">{place.price}€ / night</p>
             <div className="cardBtnContainer">
-              <button className="cardBtn" onClick={() => handleDelete(place.id)}>
-                <FontAwesomeIcon icon={faTrash} />Delete
+              <button
+                className="cardBtn"
+                onClick={() => handleDelete(place.id)}
+              >
+                <FontAwesomeIcon icon={faTrash} />
+                Delete
               </button>
-              <button className="cardBtn" onClick={() => handleDelete(place.id)}>
-              <FontAwesomeIcon icon={faPenToSquare} />Edit
+              <button
+                className="cardBtn"
+                onClick={() => handleDelete(place.id)}
+              >
+                <FontAwesomeIcon icon={faPenToSquare} />
+                Edit
               </button>
             </div>
           </div>
         </div>
       ))}
 
-      {rentalListing.length < JSON.results.length && (
-        <button className="cardBtn" onClick={handleSeeMore}>See More</button>
+      {rentalListing.length > 0 && (
+        <button className="cardBtn" onClick={handleSeeMore}>
+          See More
+        </button>
       )}
     </main>
   );
