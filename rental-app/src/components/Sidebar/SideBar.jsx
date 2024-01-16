@@ -4,7 +4,7 @@ import "./Sidebar.css";
 function Sidebar() {
   return (
     <aside className="sidebar">
-      <h2>Add a New Place to Rent</h2>
+      <h2>Create a new place</h2>
       <form
       // onSubmit={handleSubmit}
       >

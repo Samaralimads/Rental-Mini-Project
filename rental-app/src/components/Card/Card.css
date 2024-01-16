@@ -1,5 +1,5 @@
 .cardContainer {
-  border-bottom: 1px gray solid;
+  border-bottom: 1px #085f8b solid;
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
@@ -7,6 +7,7 @@
   width: 74.5vw;
   padding: 1rem;
   gap: 1rem;
+  
 }
 
 .cardImage {
@@ -45,6 +46,8 @@
   }
 }
 .cardBtn {
+  border: 1px solid #085f8b;
+  color: #085f8b;
   border-radius: 12px;
   padding: 1rem 2rem;
   gap: 0.5rem;
@@ -52,6 +55,6 @@
   background-color: transparent;
   display: flex;
   align-items: center;
-  min-width: 128px;
+  text-align: center;
   /* justify-content: space-around; */
 }

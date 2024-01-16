@@ -15,8 +15,8 @@ function App() {
       <Routes>
         <Route path="/about" element={<AboutPage />} />
         <Route path="/" element={<DashboardPage />} />
-        <Route path="/itemDetails/:id" element={<ItemDetailsPage />} />
-        <Route path="/notFound" element={<NotFoundPage />} />
+        <Route path="/item/:itemId" element={<ItemDetailsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </>

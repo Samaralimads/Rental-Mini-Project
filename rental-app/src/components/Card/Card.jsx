@@ -3,8 +3,10 @@ import "./Card.css";
 import JSON from "../../assets/rentals.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faMapPin, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Card() {
+  const navigate = useNavigate()
+
   const [visibleCount, setVisibleCount] = useState(20);
   const [rentalListing, setRentalListing] = useState(
     JSON.results.slice(0, visibleCount)
@@ -18,7 +20,9 @@ function Card() {
     const updatedListing = rentalListing.filter((place) => place.id !== id);
     setRentalListing(updatedListing);
   };
-
+const handleEdit = (id) => {
+  navigate(`/item/${id}`)
+}
   return (
     <main>
       {rentalListing.map((place) => (
@@ -41,7 +45,7 @@ function Card() {
               <button className="cardBtn" onClick={() => handleDelete(place.id)}>
                 <FontAwesomeIcon icon={faTrash} />Delete
               </button>
-              <button className="cardBtn" onClick={() => handleDelete(place.id)}>
+              <button className="cardBtn" onClick={() => handleEdit(place.id)}>
               <FontAwesomeIcon icon={faPenToSquare} />Edit
               </button>
             </div>
