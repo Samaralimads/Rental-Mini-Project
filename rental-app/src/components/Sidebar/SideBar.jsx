@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./Sidebar.css";
-import { useState } from "react";
 import axios from "axios";
 const API_URL = "https://json-server-rentals.vercel.app/results/";
 
-function Sidebar() {
+function Sidebar({ updateRentalListing }) {
   const [title, setTitle] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
@@ -32,6 +31,15 @@ function Sidebar() {
       };
 
       const response = await axios.post(`${API_URL}`, newPlace);
+      updateRentalListing(response.data);
+
+      setTitle("");
+      setCity("");
+      setCountry("");
+      setAccomodates(0);
+      setImageUrl("");
+      setPricePerNight(0);
+
       console.log(response);
     } catch (error) {
       console.error(error);

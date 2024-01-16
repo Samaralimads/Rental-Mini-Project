@@ -45,11 +45,13 @@ function Card() {
       {rentalListing.slice(0, visibleCount).map((place) => (
         <div className="cardContainer" key={place.id}>
           <Link>
-            <img
-              src={place.picture_url.url}
-              alt="Picture"
-              className="cardImage"
-            />
+            {place.picture_url && (
+              <img
+                src={place.picture_url.url}
+                alt="Picture"
+                className="cardImage"
+              />
+            )}
           </Link>
           <div className="cardInfos">
             <Link className="cardTitle">{place.name}</Link>
