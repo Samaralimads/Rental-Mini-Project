@@ -21,10 +21,6 @@ function Card() {
     setVisibleCount((prevCount) => prevCount + 20);
   };
 
-  const handleDelete = (id) => {
-    const updatedListing = rentalListing.filter((place) => place.id !== id);
-    setRentalListing(updatedListing);
-  };
   const handleEdit = (id) => {
     navigate(`/item/${id}`);
   };
@@ -44,7 +40,7 @@ function Card() {
     <main>
       {rentalListing.slice(0, visibleCount).map((place) => (
         <div className="cardContainer" key={place.id}>
-          <Link>
+          <Link to={`/item/${place.id}`}>
             {place.picture_url && (
               <img
                 src={place.picture_url.url}
@@ -54,23 +50,16 @@ function Card() {
             )}
           </Link>
           <div className="cardInfos">
-            <Link className="cardTitle">{place.name}</Link>
+            <Link to={`/item/${place.id}`} className="cardTitle">{place.name}</Link>
             <p className="cardDesc">
               <FontAwesomeIcon icon={faMapPin} /> {place.city}, {place.country}
             </p>
             <p className="cardPrice">Capacity: {place.accommodates} pax</p>
             <p className="cardPrice">{place.price}€ / night</p>
             <div className="cardBtnContainer">
-              <button
-                className="cardBtn"
-                onClick={() => handleDelete(place.id)}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-                Delete
-              </button>
               <button className="cardBtn" onClick={() => handleEdit(place.id)}>
                 <FontAwesomeIcon icon={faPenToSquare} />
-                Edit
+                Manage the place
               </button>
             </div>
           </div>

@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./ItemDetailsPage.css";
-import JSON from "../../assets/rentals.json";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   faTrash,
   faPenToSquare,
-  faRotateLeft,
   faFloppyDisk,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ItemDetailsPage() {
+  const navigate = useNavigate();
   const { itemId } = useParams();
   const [item, setItem] = useState(null);
-  // const [itemName, setItemName] = useState("");
-  // const [itemImage, setItemImage] = useState("");
-  // const [itemCity, setItemCity] = useState("");
-  // const [itemPrice, setItemPrice] = useState("");
-  // const [itemAccommodates, setItemAccommodates] = useState(0);
-  // const [itemDescription, setItemDescription] = useState("");
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
   async function fetchItemDetails() {
     try {
@@ -30,13 +23,6 @@ function ItemDetailsPage() {
       const itemData = response.data;
       setItem(itemData);
       console.log(item);
-
-      // setItemName(item.name);
-      // setItemCity(`${item.city}, ${item.country}`);
-      // setItemPrice(item.price);
-      // setItemImage(item.picture_url.url);
-      // setItemAccommodates(item.accommodates);
-      // setItemDescription(item.description);
     } catch (error) {
       console.error("Error fetching item data:", error);
     }
@@ -46,24 +32,51 @@ function ItemDetailsPage() {
     fetchItemDetails();
   }, [itemId]);
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log('Hey')
-    setDisabled(!disabled);
-  };
-  const handleEdit = (e) => {
-    e.preventDefault()
-    setDisabled((prevDisabled) => !prevDisabled
-    );
+    try {
+      const response = await axios.put(
+        `https://json-server-rentals.vercel.app/results/${itemId}`,
+        item
+      );
+      // Success case
+      if (response.status === 200) {
+        alert("Item updated successfully");
+        setDisabled(!disabled);
+      } else {
+        // Fail case
+        alert("Oh oh, Error updating item. Try again bruh.");
+      }
+    } catch (error) {
+      console.error("Error updating item:", error);
+
+      alert("Oh oh, Error updating item. Try again bruh.");
+    }
+  }
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    setDisabled((prevDisabled) => !prevDisabled);
   };
 
-async function handleDelete() {
-  try {
-    
-  } catch (error) {
-    
+  async function handleDelete() {
+    try {
+      const confirmDelete = window.confirm(
+        "Bruh, you sure you want to delete that?"
+      );
+      if (!confirmDelete) {
+        return;
+      }
+
+      await axios.delete(
+        `https://json-server-rentals.vercel.app/results/${itemId}`
+      );
+
+      alert("Item deleted successfully");
+      navigate(`/`);
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
   }
-}
 
   useEffect(() => {}, []);
   if (!item) {
@@ -80,10 +93,9 @@ async function handleDelete() {
       </div>
       <div className="rightContainerItem">
         <form className="itemForm" onSubmit={handleSubmit}>
-          <div className="itemInput" >
+          <div className="itemInput">
             <label htmlFor="name">Item Name:</label>
             <input
-              
               disabled={disabled}
               type="text"
               id="name"
@@ -153,11 +165,7 @@ async function handleDelete() {
 
           <div className="itemBtnContainer">
             {disabled ? (
-              <button
-                className="cardBtn"
-                type="button"
-                onClick={handleEdit}
-              >
+              <button className="cardBtn" type="button" onClick={handleEdit}>
                 <FontAwesomeIcon icon={faPenToSquare} />
                 Edit
               </button>
