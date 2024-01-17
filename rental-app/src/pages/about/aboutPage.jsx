@@ -9,7 +9,7 @@ const TeamMember = ({ name, image, github }) => {
       <a href={github} target="_blank" rel="noopener noreferrer">
         <img
           className="gitImg"
-          src="./public/github-mark.png"
+          src="/github-mark.png"
           alt="GitHub Icon"
         />
       </a>
@@ -38,17 +38,17 @@ const AboutPage = () => {
       <div className="team-members-container">
         <TeamMember
           name="Evan"
-          image="./public/evan.jpeg"
+          image="/evan.jpeg"
           github="https://github.com/Zevinos"
         />
         <TeamMember
           name="Michaël"
-          image="./public/Michaël.png"
+          image="/Michaël.png"
           github="https://github.com/michaelrasolo"
         />
         <TeamMember
           name="Samara"
-          image="./public/Samara.png"
+          image="/Samara.png"
           github="https://github.com/Samaralimads"
         />
       </div>

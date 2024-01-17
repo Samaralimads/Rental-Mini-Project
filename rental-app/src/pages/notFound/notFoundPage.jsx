@@ -1,7 +1,8 @@
 import React from "react";
 import "./notFoundPage.css";
-
+import { useNavigate } from "react-router";
 const NotFoundPage = () => {
+  const navigate=useNavigate()
   return (
     <div className="notFound">
       <img
@@ -11,7 +12,7 @@ const NotFoundPage = () => {
       />
       <h1>404 Not Found</h1>
       <p>Oops! The page you're looking for doesn't exist.</p>
-      <button>Back to home</button>
+      <button onClick={()=> navigate("/")}>Back to home</button>
     </div>
   );
 };
