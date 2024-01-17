@@ -7,14 +7,14 @@ function Sidebar({ updateRentalListing }) {
   const [title, setTitle] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [accomodates, setAccomodates] = useState(0);
+  const [accommodates, setAccommodates] = useState(0);
   const [imageUrl, setImageUrl] = useState("");
   const [pricePerNight, setPricePerNight] = useState(0);
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
   const handleCountry = (e) => setCountry(e.target.value);
-  const handleAccomodates = (e) => setAccomodates(e.target.value);
+  const handleAccommodates = (e) => setAccommodates(e.target.value);
   const handleImageUrl = (e) => setImageUrl(e.target.value);
   const handlePricePerNight = (e) => setPricePerNight(e.target.value);
 
@@ -22,12 +22,12 @@ function Sidebar({ updateRentalListing }) {
     e.preventDefault();
     try {
       const newPlace = {
-        title,
+        name:title,
         city,
         country,
-        accomodates,
-        imageUrl,
-        pricePerNight,
+        accommodates,
+        picture_url: { url: imageUrl },
+        price:pricePerNight,
       };
 
       const response = await axios.post(`${API_URL}`, newPlace);
@@ -36,11 +36,12 @@ function Sidebar({ updateRentalListing }) {
       setTitle("");
       setCity("");
       setCountry("");
-      setAccomodates(0);
+      setAccommodates(0);
       setImageUrl("");
       setPricePerNight(0);
 
       console.log(response);
+      alert("Allez la ! You successully added a place.");
     } catch (error) {
       console.error(error);
     }
@@ -84,13 +85,13 @@ function Sidebar({ updateRentalListing }) {
           />
         </div>
         <div>
-          <label htmlFor="newAccomodates">Accomodates:</label>
+          <label htmlFor="newAccommodates">Accommodates:</label>
           <input
             type="number"
-            id="newAccomodates"
-            name="newAccomodates"
-            value={accomodates}
-            onChange={handleAccomodates}
+            id="newAccommodates"
+            name="newAccommodates"
+            value={accommodates}
+            onChange={handleAccommodates}
             required
           />
         </div>

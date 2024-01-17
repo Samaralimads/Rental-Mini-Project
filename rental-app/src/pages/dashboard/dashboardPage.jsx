@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "../../components/Card/Card";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "../../components/Sidebar/SideBar";
 import "./dashboardPage.css";
 
 function DashboardPage() {
